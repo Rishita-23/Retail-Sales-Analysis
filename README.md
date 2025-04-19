@@ -66,14 +66,14 @@ WHERE
 
 ### 3. Data Analysis & Findings
 
-**Q1: Sales made on '2022-11-05'**
+**1: Sales made on '2022-11-05'**
 ```sql
 SELECT *
 FROM retail_sales
 WHERE sale_date = '2022-11-05';
 ```
 
-**Q2: Clothing sales > 4 in Nov 2022**
+**2: Clothing sales > 4 in Nov 2022**
 ```sql
 SELECT *
 FROM retail_sales
@@ -82,28 +82,28 @@ WHERE category = 'Clothing'
   AND quantity >= 4;
 ```
 
-**Q3: Total sales by category**
+**3: Total sales by category**
 ```sql
 SELECT category, SUM(total_sale) as net_sale, COUNT(*) as total_orders
 FROM retail_sales
 GROUP BY category;
 ```
 
-**Q4: Average age of Beauty buyers**
+**4: Average age of Beauty buyers**
 ```sql
 SELECT ROUND(AVG(age), 2) as avg_age
 FROM retail_sales
 WHERE category = 'Beauty';
 ```
 
-**Q5: Transactions > 1000**
+**5: Transactions > 1000**
 ```sql
 SELECT *
 FROM retail_sales
 WHERE total_sale > 1000;
 ```
 
-**Q6: Transactions by gender & category**
+**6: Transactions by gender & category**
 ```sql
 SELECT category, gender, COUNT(*) as total_trans
 FROM retail_sales
@@ -111,7 +111,7 @@ GROUP BY category, gender
 ORDER BY category;
 ```
 
-**Q7: Best-selling month per year**
+**7: Best-selling month per year**
 ```sql
 SELECT year, month, avg_sale
 FROM (
@@ -126,7 +126,7 @@ FROM (
 WHERE rank = 1;
 ```
 
-**Q8: Top 5 customers by total sales**
+**8: Top 5 customers by total sales**
 ```sql
 SELECT customer_id, SUM(total_sale) as total_sales
 FROM retail_sales
@@ -135,14 +135,14 @@ ORDER BY total_sales DESC
 LIMIT 5;
 ```
 
-**Q9: Unique customers per category**
+**9: Unique customers per category**
 ```sql
 SELECT category, COUNT(DISTINCT customer_id) as cnt_unique_cs
 FROM retail_sales
 GROUP BY category;
 ```
 
-**Q10: Sales by shift (Morning, Afternoon, Evening)**
+**10: Sales by shift (Morning, Afternoon, Evening)**
 ```sql
 WITH hourly_sale AS (
   SELECT *,
